@@ -19,7 +19,7 @@ A simple Python-based web application for task management with real-time updates
 
 ### 1. Clone the Repository
 ```bash
-git clone <repository-url>
+git clone <https://github.com/muskan-chauhan7/task-manager.git>
 cd task-manager
 ```
 
