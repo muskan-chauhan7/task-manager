@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Task Manager</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"></script>
+</head>
+<body>
+    <nav>
+        <div class="nav-content">
+            <h1>Task Manager</h1>
+            <div class="nav-links">
+                <span>Welcome, {{ current_user.username }}!</span>
+                <a href="{{ url_for('logout') }}">Logout</a>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <section class="analytics-section">
+            <h2>Analytics Summary</h2>
+            <div class="analytics-grid" id="analytics-summary">
+                <div class="stat-card">
+                    <span class="stat-label">Total Tasks</span>
+                    <span class="stat-value" id="total-tasks">0</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-label">Completed</span>
+                    <span class="stat-value" id="completed-tasks">0</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-label">Pending</span>
+                    <span class="stat-value" id="pending-tasks">0</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-label">Completion %</span>
+                    <span class="stat-value" id="completion-percent">0%</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="task-form-section">
+            <h2>Add New Task</h2>
+            <form id="add-task-form">
+                <input type="text" id="task-title" placeholder="Task Title" required>
+                <textarea id="task-desc" placeholder="Description"></textarea>
+                <select id="task-priority">
+                    <option value="Low">Low</option>
+                    <option value="Medium" selected>Medium</option>
+                    <option value="High">High</option>
+                </select>
+                <button type="submit" class="btn">Add Task</button>
+            </form>
+        </section>
+
+        <section class="tasks-list-section">
+            <h2>Your Tasks</h2>
+            <div id="tasks-list" class="tasks-grid">
+                <!-- Tasks will be loaded here via JS -->
+            </div>
+        </section>
+    </main>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
